@@ -1,4 +1,5 @@
 #include "user.h"
+#include <stdexcept>
 
 // ctor with parameters
 User::User(const std::string& fullName, const std::string& email, const std::string& password) : m_fullname(fullName) {
@@ -6,13 +7,13 @@ User::User(const std::string& fullName, const std::string& email, const std::str
         m_email = email;
     }
     else{
-        std::cout << "Invalid email address." << std::endl;
+        throw std::invalid_argument("Invalid email address.");
     }
     if(verify_password_params(password)){
         m_password = password;
     }
     else {
-        std::cout << "Please use 1 upper/lower case letter, 1 number and 1 special character." << std::endl;
+        throw std::invalid_argument("Please use 1 upper/lower case letter, 1 number and 1 special character.");
     }
 }
 
