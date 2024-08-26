@@ -23,7 +23,7 @@ public:
     void change_password(const std::string& old_password);
     void change_email(const std::string& new_email);
     void change_name(const std::string& new_name);
-
+    
 private:
     bool verify_password_params(const std::string& password);
     bool verify_email_params(const std::string& email);

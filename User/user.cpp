@@ -61,7 +61,7 @@ void User::set_password(const std::string& password){
         std::cout << "Password is set succesfully!" << std::endl;
     }
     else{
-        std::cout << "Please use 1 upper case letter and 1 special character." << std::endl;
+        throw std::invalid_argument("Please use 1 upper/lower case letter, 1 number and 1 special character.");
     }
 }
 
@@ -93,12 +93,12 @@ void User::change_password(const std::string& old_password){
 }
 
 void User::change_email(const std::string& new_email){
-    for(char c : new_email){
-        if(c == 64) m_email = new_email;
-        std::cout << "New email is set." << std::endl;
-        return;
+    if(verify_email_params(new_email)){
+        m_email = new_email;
     }
-    std::cout << "Invalid email address." << std::endl;
+    else{
+        throw std::invalid_argument("Invalid email address.");
+    }
 }
 
 void User::change_name(const std::string& new_name){
