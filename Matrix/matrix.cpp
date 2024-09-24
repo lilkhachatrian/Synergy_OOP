@@ -162,7 +162,6 @@ Matrix operator-(const Matrix& m1, const Matrix& m2){
     }
     return result;
 }
-
 Matrix operator*(const Matrix& m1, const Matrix& m2){
     if(m1.m_column != m2.m_row){
         std::invalid_argument("Dimentions do not match.");
